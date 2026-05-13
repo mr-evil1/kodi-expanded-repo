@@ -1,0 +1,38 @@
+name: Update Kodi Repository
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build addons.xml + MD5
+        run: python .github/scripts/build_repo.py
+
+      - name: Zip addon folders
+        run: python .github/scripts/zip_addons.py
+
+      - name: Commit & Push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add addons.xml addons.xml.md5 *.zip **/*.zip 2>/dev/null || true
+          git add -A
+          git diff --cached --quiet || git commit -m "chore: auto-update repo index [skip ci]"
+          git push
