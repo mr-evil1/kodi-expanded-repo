@@ -1,14 +1,3 @@
 # Kodi Expanded Repo
 
-Konform Kodi Addons
-
----
-
-## Installation in Kodi
-
-### 1. Unbekannte Quellen erlauben
-`Einstellungen → System → Add-ons → Unbekannte Quellen` → **Ein**
-
-### 2. Repository-Quelle hinzufügen
-`Einstellungen → Dateimanager → Quelle hinzufügen`
-
+https://raw.githubusercontent.com/mr-evil1/kodi-expanded-repo/refs/heads/main/repository.kodi.expanded/fanart.jpg
