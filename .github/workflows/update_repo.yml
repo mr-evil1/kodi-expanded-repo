@@ -2,37 +2,58 @@ name: Update Kodi Repository
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [ main ]
+  workflow_dispatch: # Erlaubt manuelles Starten unter dem Reiter "Actions"
 
 permissions:
-  contents: write
+  contents: write  # Wichtig für den Schreibzugriff (Push) auf das Repo
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Holt die gesamte Historie für sauberes Committen
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
+    - name: Generate addons.xml
+      run: |
+        # Header erstellen
+        echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' > addons.xml
+        echo '<addons>' >> addons.xml
+        
+        # Sucht in Unterordnern nach addon.xml Dateien
+        # find ist zuverlässiger als eine einfache for-schleife
+        find . -maxdepth 2 -not -path '*/.*' -name 'addon.xml' | while read file; do
+          echo "Verarbeite: $file"
+          # Entfernt die XML-Deklaration (1. Zeile) und fügt den Rest an
+          tail -n +2 "$file" >> addons.xml
+        done
+        
+        echo '</addons>' >> addons.xml
 
-      - name: Build addons.xml + MD5
-        run: python .github/scripts/build_repo.py
+    - name: Generate MD5
+      run: |
+        # Vorhandene MD5 löschen, um Kollisionen zu vermeiden
+        rm -f addons.xml.md5
+        # MD5 erzeugen und NUR den Hash speichern (Kodi-Standard)
+        md5sum addons.xml | awk '{ print $1 }' > addons.xml.md5
+        echo "Aktuelle MD5-Prüfsumme: $(cat addons.xml.md5)"
 
-      - name: Zip addon folders
-        run: python .github/scripts/zip_addons.py
-
-      - name: Commit & Push
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add addons.xml addons.xml.md5 *.zip **/*.zip 2>/dev/null || true
-          git add -A
-          git diff --cached --quiet || git commit -m "chore: auto-update repo index [skip ci]"
+    - name: Commit and Push changes
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Beide Dateien für den Commit vormerken
+        git add addons.xml addons.xml.md5
+        
+        # Prüfen, ob tatsächliche Änderungen vorliegen
+        if git diff --staged --quiet; then
+          echo "Keine Änderungen an addons.xml oder MD5 festgestellt. Überspringe Commit."
+        else
+          git commit -m "chore: auto-update addons.xml and md5 [skip ci]"
           git push
+        fi
