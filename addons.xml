@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="repository.kodi.expanded"
-       name="Kodi Expanded Repository"
-       version="1.0.0"
-       provider-name="mr-evil1">
-
-  <extension point="xbmc.addon.repository" name="Kodi Expanded Repository">
-    <dir>
-      <info compressed="false">https://mr-evil1.github.io/kodi-expanded-repo/addons.xml</info>
-      <checksum>https://mr-evil1.github.io/kodi-expanded-repo/addons.xml.md5</checksum>
-      <datadir zip="true">https://mr-evil1.github.io/kodi-expanded-repo/</datadir>
-    </dir>
-  </extension>
-
-  <extension point="xbmc.addon.metadata">
-    <summary lang="de">Kodi Expanded Repository</summary>
-    <summary lang="en">Kodi Expanded Repository</summary>
-    <description lang="de">Repository von Kodi Expanded Addons.</description>
-    <description lang="en">Repository of Kodi Expanded Addons.</description>
-    <platform>all</platform>
-    <assets>
-      <icon>icon.png</icon>
-      <fanart>fanart.jpg</fanart>
-    </assets>
-  </extension>
-
-</addon>
 <addon id="plugin.video.rtlplus" name="RTL+" version="2026.05.15" provider-name="mr-evil1">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
@@ -93,5 +67,31 @@
 - Navigation aus /navigation/desktop
 		</news>
 	</extension>
+</addon>
+<addon id="repository.kodi.expanded"
+       name="Kodi Expanded Repository"
+       version="1.0.0"
+       provider-name="mr-evil1">
+
+  <extension point="xbmc.addon.repository" name="Kodi Expanded Repository">
+    <dir>
+      <info compressed="false">https://mr-evil1.github.io/kodi-expanded-repo/addons.xml</info>
+      <checksum>https://mr-evil1.github.io/kodi-expanded-repo/addons.xml.md5</checksum>
+      <datadir zip="true">https://mr-evil1.github.io/kodi-expanded-repo/</datadir>
+    </dir>
+  </extension>
+
+  <extension point="xbmc.addon.metadata">
+    <summary lang="de">Kodi Expanded Repository</summary>
+    <summary lang="en">Kodi Expanded Repository</summary>
+    <description lang="de">Repository von Kodi Expanded Addons.</description>
+    <description lang="en">Repository of Kodi Expanded Addons.</description>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
+
 </addon>
 </addons>
