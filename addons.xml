@@ -26,7 +26,7 @@
   </extension>
 
 </addon>
-<addon id="plugin.video.rtlplus" name="RTL+" version="2026.05.27" provider-name="mr-evil1">
+<addon id="plugin.video.rtlplus" name="RTL+" version="2026.05.28" provider-name="mr-evil1">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
         <import addon="repository.kodi.expanded" version="1.0.0"/>
