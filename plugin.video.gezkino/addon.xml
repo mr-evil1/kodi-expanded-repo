@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.gezkino" name="[GEZ] KiNO" version="2026.05.28" provider-name="zusatzmetall, Kato14, mr-evil1, RON-tan">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.requests"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="de">Filtert Spielfilme aus den öffentlich-rechtlichen Mediatheken (Mediathekview)</summary>
+        <description lang="de">Zeigt Filme ab 78 Minuten Laufzeit</description>
+        <platform>all</platform>
+		<assets>
+			<icon>media/icon.png</icon>
+			<fanart>media/fanart.png</fanart>
+		</assets>        
+    </extension>
+</addon>
