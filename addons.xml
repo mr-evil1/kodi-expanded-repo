@@ -119,7 +119,7 @@
 		</news>
 	</extension>
 </addon>
-<addon id="plugin.video.gezkino" name="[GEZ] KiNO" version="2026.05.28" provider-name="zusatzmetall, Kato14, mr-evil1, RON-tan">
+<addon id="plugin.video.gezkino" name="[GEZ] KiNO" version="2026.05.30" provider-name="zusatzmetall, Kato14, mr-evil1, RON-tan">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
         <import addon="script.module.requests"/>
