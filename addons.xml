@@ -161,7 +161,7 @@
 		</news>
 	</extension>
 </addon>
-<addon id="plugin.video.gezkino" name="[GEZ] KiNO" version="2026.05.30" provider-name="zusatzmetall, Kato14, mr-evil1, RON-tan">
+<addon id="plugin.video.gezkino" name="[COLOR ff007fff][[/COLOR][COLOR ff3266ff]G[/COLOR][COLOR ff664cff]E[/COLOR][COLOR ff9933ff]Z[/COLOR][COLOR ffcc19ff]][/COLOR][COLOR ffff00ff] [/COLOR][COLOR ffdf00ff]K[/COLOR][COLOR ffbf00ff]i[/COLOR][COLOR ff9f00ff]N[/COLOR][COLOR ff7f00ff]O[/COLOR]" version="2026.06.09" provider-name="zusatzmetall, Kato14, mr-evil1, Kangool">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
         <import addon="script.module.requests"/>
@@ -176,6 +176,8 @@
 		<assets>
 			<icon>media/icon.png</icon>
 			<fanart>media/fanart.png</fanart>
+			<banner>media/fanart.png</banner>
+			<screenshot>media/fanart.png</screenshot>			
 		</assets>        
     </extension>
 </addon>
