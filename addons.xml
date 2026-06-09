@@ -53,7 +53,7 @@
     </extension>
 
 </addon>
-<addon id="plugin.video.rtlplus" name="RTL+" version="2026.06.08" provider-name="mr-evil1">
+<addon id="plugin.video.rtlplus" name="RTL+" version="2026.06.09" provider-name="mr-evil1">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
         <import addon="repository.kodi.expanded" version="1.0.0" optional="true"/>
@@ -77,6 +77,9 @@
 			<fanart>resources/media/fanart.jpg</fanart>
 		</assets>
 		<news>
+[B][COLOR red]Version (08.06.2026) - Erweiterung[/COLOR][/B]
+- Profil Manager hinzugefügt
+
 [B][COLOR red]Version (08.06.2026) - Erweiterung[/COLOR][/B]
 - Fix Account Modus
 - Doppel Ordner Fehler behoben
