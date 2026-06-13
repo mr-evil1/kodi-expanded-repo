@@ -1,63 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="repository.kodi.expanded"
-       name="Kodi Expanded Repository"
-       version="1.0.0"
-       provider-name="mr-evil1">
-
-  <extension point="xbmc.addon.repository" name="Kodi Expanded Repository">
-    <dir>
-      <info compressed="false">https://mr-evil1.github.io/kodi-expanded-repo/addons.xml</info>
-      <checksum>https://mr-evil1.github.io/kodi-expanded-repo/addons.xml.md5</checksum>
-      <datadir zip="true">https://mr-evil1.github.io/kodi-expanded-repo/</datadir>
-    </dir>
-  </extension>
-
-  <extension point="xbmc.addon.metadata">
-    <summary lang="de">Kodi Expanded Repository</summary>
-    <summary lang="en">Kodi Expanded Repository</summary>
-    <description lang="de">Repository von Kodi Expanded Addons.</description>
-    <description lang="en">Repository of Kodi Expanded Addons.</description>
-    <platform>all</platform>
-    <assets>
-      <icon>icon.png</icon>
-      <fanart>fanart.jpg</fanart>
-    </assets>
-  </extension>
-
-</addon>
-<addon id="plugin.video.werwirdmillionaer"
-       name="Wer wird Millionär?"
-       version="2026.06.07"
-       provider-name="mr-evil1">
-
+<addon id="plugin.video.gezkino" name="[COLOR ff007fff][[/COLOR][COLOR ff3266ff]G[/COLOR][COLOR ff664cff]E[/COLOR][COLOR ff9933ff]Z[/COLOR][COLOR ffcc19ff]][/COLOR][COLOR ffff00ff] [/COLOR][COLOR ffdf00ff]K[/COLOR][COLOR ffbf00ff]i[/COLOR][COLOR ff9f00ff]N[/COLOR][COLOR ff7f00ff]O[/COLOR]" version="2026.06.09" provider-name="zusatzmetall, Kato14, mr-evil1, Kangool">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
-        <import addon="repository.kodi.expanded" version="1.0.0"/>
+        <import addon="script.module.requests"/>
     </requires>
-
     <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>video</provides>
     </extension>
-
     <extension point="xbmc.addon.metadata">
-        <summary lang="de">Wer wird Millionär?</summary>
-        <summary lang="en">Who Wants to Be a Millionaire?</summary>
-        <description lang="de">Wer wird Millionär? ist die bekannteste Quizshow Deutschlands, moderiert von Günther Jauch. Ziel ist es, durch das Beantworten von 15 Fragen mit steigendem Schwierigkeitsgrad bis zu einer Million Euro zu gewinnen. Als Hilfe stehen drei Joker zur Verfügung: Publikumsjoker, Telefonjoker und 50:50-Joker. Dieses Kodi-Addon ermöglicht es, mit echten Fragen aus der Sendung zu trainieren, Highscores zu vergleichen und den eigenen Wissensstand zu testen – direkt vom Sofa aus.</description>
-        <description lang="en">Who Wants to Be a Millionaire? is Germany's most iconic quiz show, hosted by Günther Jauch. The goal is to answer 15 increasingly difficult multiple-choice questions to win up to one million euros. Three lifelines are available: Ask the Audience, Phone a Friend, and 50:50. This Kodi add-on lets you practice with real questions from the show, compete on leaderboards, and test your knowledge – all from your couch.</description>
+        <summary lang="de">Filtert Spielfilme aus den öffentlich-rechtlichen Mediatheken (Mediathekview)</summary>
+        <description lang="de">Zeigt Filme ab 78 Minuten Laufzeit</description>
         <platform>all</platform>
-      <assets>
-        <icon>icon.png</icon>
-        <fanart>fanart.jpg</fanart>
-      </assets>
+		<assets>
+			<icon>media/icon.png</icon>
+			<fanart>media/fanart.png</fanart>
+			<banner>media/fanart.png</banner>
+			<screenshot>media/fanart.png</screenshot>			
+		</assets>        
     </extension>
-
 </addon>
-<addon id="plugin.video.rtlplus" name="RTL+" version="2026.06.09" provider-name="mr-evil1">
+<addon id="plugin.video.bilddenews" name="Bild.de News" version="2026.05.04" provider-name="zusatzmetall">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.requests"/>
+        <import addon="script.module.feedparser"/>
+        <import addon="script.module.beautifulsoup4"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <license>GPL-2.0-only</license>
+        <forum></forum>
+        <source></source>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.png</fanart>
+        </assets>
+        <summary lang="de_DE">Aktuelle Nachrichten von Bild.de</summary>
+        <description lang="de_DE">Mit diesem Addon kannst du die neuesten Nachrichten und Schlagzeilen von Bild.de direkt in Kodi abrufen. Übersichtlich sortiert nach Kategorien und optimiert für die D-Pad-Navigation.</description>
+        <disclaimer lang="de_DE">Dieses Addon ist ein eigenständiges Community-Projekt und steht in keiner Verbindung mit der Axel Springer SE.</disclaimer>
+    </extension>
+</addon>
+<addon id="script.ydkj.quiz" name = "[COLOR ff0088ff]Y[/COLOR][COLOR ff3399ff]o[/COLOR][COLOR ff66aaff]u[/COLOR] [COLOR ff88bbff]D[/COLOR][COLOR ffaaccff]o[/COLOR][COLOR ffbbddff]n[/COLOR][COLOR ffccddff]'[/COLOR][COLOR ffddeeff]t[/COLOR] [COLOR ffbbddff]K[/COLOR][COLOR ffaaeeff]n[/COLOR][COLOR ff88ddff]o[/COLOR][COLOR ff66ccff]w[/COLOR] [COLOR ff44bbff]J[/COLOR][COLOR ff22aaff]a[/COLOR][COLOR ff0099ff]c[/COLOR][COLOR ff0088ff]k[/COLOR] [COLOR ff0077ff]-[/COLOR] [COLOR ff0066ff]F[/COLOR][COLOR ff0055ff]a[/COLOR][COLOR ff0044ff]n[/COLOR] [COLOR ff0033ff]Q[/COLOR][COLOR ff0022ff]u[/COLOR][COLOR ff0011ff]i[/COLOR][COLOR ff0000ff]z[/COLOR]" version="2026.06.07" provider-name="zusatzmetall">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <license>GPL-2.0-only</license>
+        <summary lang="de">Das ultimative, sarkastische Quiz-Event für bis zu 3 Spieler!</summary>
+        <description lang="de">Willkommen beim Fan-Quiz! Teste dein Allgemeinwissen in knallharten Runden, aber Vorsicht: Unser virtueller Moderator ist absolut gnadenlos. Mit dem speziellen „Nagel-Feature“ kannst du deine Mitspieler gezielt in die Falle locken und sie zu einer Antwort zwingen – doch pass auf, dass der Schuss nicht nach hinten losgeht! Wer zu feige ist oder falsch liegt, wird nicht nur mit Punktabzug bestraft, sondern muss sich auch noch einen der vielen beißend sarkastischen Kommentare anhören. Bist du bereit, dich verbal zerlegen zu lassen, oder knackst du den Highscore?</description>
+        <assets>
+            <icon>resources/media/icon.png</icon>
+            <fanart>resources/media/fanart.png</fanart>
+			<banner>resources/media/fanart.png</banner>
+			<clearlogo>resources/media/icon.png</clearlogo>
+			<screenshot>resources/media/fanart.png</screenshot>          
+        </assets>
+    </extension>
+</addon>
+<addon id="plugin.video.rtlplus" name="RTL+" version="2026.06.13" provider-name="mr-evil1">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
-        <import addon="repository.kodi.expanded" version="1.0.0" optional="true"/>
-        <import addon="repository.kodinerds" version="7.0.1.7" optional="true"/>
+        <import addon="repository.kodi.expanded" version="1.0.0"/>
 		<import addon="script.module.requests"/>
 		<import addon="inputstream.adaptive"/>
 		<import addon="script.module.inputstreamhelper"/>
@@ -77,12 +88,8 @@
 			<fanart>resources/media/fanart.jpg</fanart>
 		</assets>
 		<news>
-[B][COLOR red]Version (08.06.2026) - Erweiterung[/COLOR][/B]
-- Profil Manager hinzugefügt
-
-[B][COLOR red]Version (08.06.2026) - Erweiterung[/COLOR][/B]
-- Fix Account Modus
-- Doppel Ordner Fehler behoben
+[B][COLOR red]Version (13.06.2026) - Erweiterung[/COLOR][/B]
+- Fix Gesehen Status
 
 [B][COLOR red]Version (04.06.2026) - Erweiterung[/COLOR][/B]
 - Add Sort Mode
@@ -161,49 +168,32 @@
 		</news>
 	</extension>
 </addon>
-<addon id="plugin.video.gezkino" name="[COLOR ff007fff][[/COLOR][COLOR ff3266ff]G[/COLOR][COLOR ff664cff]E[/COLOR][COLOR ff9933ff]Z[/COLOR][COLOR ffcc19ff]][/COLOR][COLOR ffff00ff] [/COLOR][COLOR ffdf00ff]K[/COLOR][COLOR ffbf00ff]i[/COLOR][COLOR ff9f00ff]N[/COLOR][COLOR ff7f00ff]O[/COLOR]" version="2026.06.09" provider-name="zusatzmetall, Kato14, mr-evil1, Kangool">
+<addon id="plugin.video.werwirdmillionaer"
+       name="Wer wird Millionär?"
+       version="2026.06.07"
+       provider-name="mr-evil1">
+
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
-        <import addon="script.module.requests"/>
+        <import addon="repository.kodi.expanded" version="1.0.0"/>
     </requires>
+
     <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>video</provides>
     </extension>
+
     <extension point="xbmc.addon.metadata">
-        <summary lang="de">Filtert Spielfilme aus den öffentlich-rechtlichen Mediatheken (Mediathekview)</summary>
-        <description lang="de">Zeigt Filme ab 78 Minuten Laufzeit</description>
+        <summary lang="de">Wer wird Millionär?</summary>
+        <summary lang="en">Who Wants to Be a Millionaire?</summary>
+        <description lang="de">Wer wird Millionär? ist die bekannteste Quizshow Deutschlands, moderiert von Günther Jauch. Ziel ist es, durch das Beantworten von 15 Fragen mit steigendem Schwierigkeitsgrad bis zu einer Million Euro zu gewinnen. Als Hilfe stehen drei Joker zur Verfügung: Publikumsjoker, Telefonjoker und 50:50-Joker. Dieses Kodi-Addon ermöglicht es, mit echten Fragen aus der Sendung zu trainieren, Highscores zu vergleichen und den eigenen Wissensstand zu testen – direkt vom Sofa aus.</description>
+        <description lang="en">Who Wants to Be a Millionaire? is Germany's most iconic quiz show, hosted by Günther Jauch. The goal is to answer 15 increasingly difficult multiple-choice questions to win up to one million euros. Three lifelines are available: Ask the Audience, Phone a Friend, and 50:50. This Kodi add-on lets you practice with real questions from the show, compete on leaderboards, and test your knowledge – all from your couch.</description>
         <platform>all</platform>
-		<assets>
-			<icon>media/icon.png</icon>
-			<fanart>media/fanart.png</fanart>
-			<banner>media/fanart.png</banner>
-			<screenshot>media/fanart.png</screenshot>			
-		</assets>        
+      <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+      </assets>
     </extension>
-</addon>
-<addon id="plugin.video.bilddenews" name="Bild.de News" version="2026.05.04" provider-name="zusatzmetall">
-    <requires>
-        <import addon="xbmc.python" version="3.0.0"/>
-        <import addon="script.module.requests"/>
-        <import addon="script.module.feedparser"/>
-        <import addon="script.module.beautifulsoup4"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="addon.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <license>GPL-2.0-only</license>
-        <forum></forum>
-        <source></source>
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.png</fanart>
-        </assets>
-        <summary lang="de_DE">Aktuelle Nachrichten von Bild.de</summary>
-        <description lang="de_DE">Mit diesem Addon kannst du die neuesten Nachrichten und Schlagzeilen von Bild.de direkt in Kodi abrufen. Übersichtlich sortiert nach Kategorien und optimiert für die D-Pad-Navigation.</description>
-        <disclaimer lang="de_DE">Dieses Addon ist ein eigenständiges Community-Projekt und steht in keiner Verbindung mit der Axel Springer SE.</disclaimer>
-    </extension>
+
 </addon>
 <addon id="script.module.httpx"
        name="httpx"
@@ -228,25 +218,30 @@
   </extension>
 
 </addon>
-<addon id="script.ydkj.quiz" name = "[COLOR ff0088ff]Y[/COLOR][COLOR ff3399ff]o[/COLOR][COLOR ff66aaff]u[/COLOR] [COLOR ff88bbff]D[/COLOR][COLOR ffaaccff]o[/COLOR][COLOR ffbbddff]n[/COLOR][COLOR ffccddff]'[/COLOR][COLOR ffddeeff]t[/COLOR] [COLOR ffbbddff]K[/COLOR][COLOR ffaaeeff]n[/COLOR][COLOR ff88ddff]o[/COLOR][COLOR ff66ccff]w[/COLOR] [COLOR ff44bbff]J[/COLOR][COLOR ff22aaff]a[/COLOR][COLOR ff0099ff]c[/COLOR][COLOR ff0088ff]k[/COLOR] [COLOR ff0077ff]-[/COLOR] [COLOR ff0066ff]F[/COLOR][COLOR ff0055ff]a[/COLOR][COLOR ff0044ff]n[/COLOR] [COLOR ff0033ff]Q[/COLOR][COLOR ff0022ff]u[/COLOR][COLOR ff0011ff]i[/COLOR][COLOR ff0000ff]z[/COLOR]" version="2026.06.07" provider-name="zusatzmetall">
-    <requires>
-        <import addon="xbmc.python" version="3.0.0"/>
-    </requires>
-    <extension point="xbmc.python.script" library="default.py">
-        <provides>executable</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <license>GPL-2.0-only</license>
-        <summary lang="de">Das ultimative, sarkastische Quiz-Event für bis zu 3 Spieler!</summary>
-        <description lang="de">Willkommen beim Fan-Quiz! Teste dein Allgemeinwissen in knallharten Runden, aber Vorsicht: Unser virtueller Moderator ist absolut gnadenlos. Mit dem speziellen „Nagel-Feature“ kannst du deine Mitspieler gezielt in die Falle locken und sie zu einer Antwort zwingen – doch pass auf, dass der Schuss nicht nach hinten losgeht! Wer zu feige ist oder falsch liegt, wird nicht nur mit Punktabzug bestraft, sondern muss sich auch noch einen der vielen beißend sarkastischen Kommentare anhören. Bist du bereit, dich verbal zerlegen zu lassen, oder knackst du den Highscore?</description>
-        <assets>
-            <icon>resources/media/icon.png</icon>
-            <fanart>resources/media/fanart.png</fanart>
-			<banner>resources/media/fanart.png</banner>
-			<clearlogo>resources/media/icon.png</clearlogo>
-			<screenshot>resources/media/fanart.png</screenshot>          
-        </assets>
-    </extension>
+<addon id="repository.kodi.expanded"
+       name="Kodi Expanded Repository"
+       version="1.0.0"
+       provider-name="mr-evil1">
+
+  <extension point="xbmc.addon.repository" name="Kodi Expanded Repository">
+    <dir>
+      <info compressed="false">https://mr-evil1.github.io/kodi-expanded-repo/addons.xml</info>
+      <checksum>https://mr-evil1.github.io/kodi-expanded-repo/addons.xml.md5</checksum>
+      <datadir zip="true">https://mr-evil1.github.io/kodi-expanded-repo/</datadir>
+    </dir>
+  </extension>
+
+  <extension point="xbmc.addon.metadata">
+    <summary lang="de">Kodi Expanded Repository</summary>
+    <summary lang="en">Kodi Expanded Repository</summary>
+    <description lang="de">Repository von Kodi Expanded Addons.</description>
+    <description lang="en">Repository of Kodi Expanded Addons.</description>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
+
 </addon>
 </addons>
