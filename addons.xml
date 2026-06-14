@@ -65,10 +65,11 @@
         </assets>
     </extension>
 </addon>
-<addon id="plugin.video.rtlplus" name="RTL+" version="2026.06.13" provider-name="mr-evil1">
+<addon id="plugin.video.rtlplus" name="RTL+" version="2026.06.14" provider-name="mr-evil1">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
-        <import addon="repository.kodi.expanded" version="1.0.0"/>
+        <import addon="repository.kodi.expanded" version="1.0.0" optional="true"/>
+        <import addon="repository.kodinerds" optional="true"/>
 		<import addon="script.module.requests"/>
 		<import addon="inputstream.adaptive"/>
 		<import addon="script.module.inputstreamhelper"/>
@@ -88,6 +89,9 @@
 			<fanart>resources/media/fanart.jpg</fanart>
 		</assets>
 		<news>
+[B][COLOR red]Version (14.06.2026) - Erweiterung[/COLOR][/B]
+- Browser Auswahl für Windows hinzugefügt
+
 [B][COLOR red]Version (13.06.2026) - Erweiterung[/COLOR][/B]
 - Fix Gesehen Status
 
