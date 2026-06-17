@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodi Repository - macOS Edition</title>
+    <style>
+        :root {
+            --mac-bg: radial-gradient(circle at 0% 0%, #3b2d54, transparent 55%), 
+                      radial-gradient(circle at 100% 0%, #1d3d54, transparent 55%), 
+                      #0f111a;
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-sub: #a0aec0;
+            --apple-blue: #007aff;
+            --apple-blue-hover: #1485ff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--mac-bg);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mac-menu-bar {
+            background: rgba(15, 17, 26, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.4rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .menu-left span { margin-right: 1.5rem; cursor: default; }
+        .menu-left .apple-logo { font-size: 1rem; }
+
+        header { text-align: center; padding: 7rem 1rem 3rem 1rem; }
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.05rem;
+            margin: 0 0 0.5rem 0;
+            background: linear-gradient(180deg, #fff 0%, #a5a5a5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .repo-url-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: #34c759;
+            margin-top: 1rem;
+        }
+
+        main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 6rem 1rem; }
+        .addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2.5rem; }
+
+        .mac-window {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        .mac-window:hover { transform: scale(1.02); box-shadow: 0 35px 60px -10px rgba(0, 0, 0, 0.7); }
+        .window-header { background: rgba(0, 0, 0, 0.2); padding: 0.8rem 1rem; display: flex; align-items: center; position: relative; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .traffic-lights { display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+        .window-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 0.85rem; font-weight: 600; color: var(--text-sub); letter-spacing: 0.02rem; }
+
+        .addon-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(0,0,0,0.2); height: 200px; }
+        .addon-gallery img { width: 100%; height: 100%; object-fit: cover; }
+
+        .window-content { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .addon-name { margin: 0 0 0.75rem 0; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.02rem; }
+        .addon-desc { color: var(--text-sub); font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem; flex-grow: 1; }
+
+        .mac-btn {
+            display: inline-block;
+            text-align: center;
+            background: var(--apple-blue);
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: background 0.15s ease, transform 0.1s ease;
+            align-self: flex-start;
+        }
+        .mac-btn:hover { background: var(--apple-blue-hover); }
+        .mac-btn:active { transform: scale(0.98); }
+
+        @media (max-width: 600px) {
+            .addon-grid { grid-template-columns: 1fr; }
+            .mac-menu-bar { display: none; }
+            header { padding-top: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mac-menu-bar">
+        <div class="menu-left">
+            <span class="apple-logo"></span>
+            <strong>Finder</strong>
+            <span>Ablage</span>
+            <span>Bearbeiten</span>
+            <span>Addons</span>
+        </div>
+        <div class="menu-right">
+            <span>Repo OS v1.4</span>
+        </div>
+    </div>
+
+    <header>
+        <h1>Kodi Expanded Repo</h1>
+        <p style="color: var(--text-sub); margin-bottom: 0.5rem;">Füge diese Source in Kodi hinzu:</p>
+        <div class="repo-url-box">
+            <span>https://mr-evil1.github.io/kodi-expanded-repo/</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="addon-grid">
+            
+            <div class="mac-window">
+                <div class="window-header">
+                    <div class="traffic-lights">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="window-title">plugin.video.gezkino v2026.06.09</div>
+                </div>
+                
+                <div class="addon-gallery">
+                    <img src="https://raw.githubusercontent.com/mr-evil1/kodi-expanded-repo/refs/heads/main/plugin.video.gezkino/media/fanart.png" alt="Fanart">
+                    <img src="https://raw.githubusercontent.com/mr-evil1/kodi-expanded-repo/refs/heads/main/plugin.video.gezkino/media/icon.png" alt="Icon" style="object-fit: contain; background: rgba(0,0,0,0.4); padding: 10px;">
+                </div>
+
+                <div class="window-content">
+                    <h2 class="addon-name"><span style="color: #007fff;">[</span><span style="color: #3266ff;">G</span><span style="color: #664cff;">E</span><span style="color: #9933ff;">Z</span><span style="color: #cc19ff;">]</span><span style="color: #ff00ff;"> </span><span style="color: #df00ff;">K</span><span style="color: #bf00ff;">i</span><span style="color: #9f00ff;">N</span><span style="color: #7f00ff;">O</span></h2>
+                    <p class="addon-desc">Zeigt Filme ab 78 Minuten Laufzeit</p>
+                    <a href="https://github.com/mr-evil1/kodi-expanded-repo/raw/refs/heads/main/plugin.video.gezkino/plugin.video.gezkino-2026.06.09.zip" class="mac-btn">Download ZIP (v2026.06.09)</a>
+                </div>
+            </div>
+        
+            <div class="mac-window">
+                <div class="window-header">
+                    <div class="traffic-lights">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="window-title">plugin.video.bilddenews v2026.05.04</div>
+                </div>
+                
+                <div class="addon-gallery">
+                    <img src="https://raw.githubusercontent.com/mr-evil1/kodi-expanded-repo/refs/heads/main/plugin.video.bilddenews/fanart.png" alt="Fanart">
+                    <img src="https://raw.githubusercontent.com/mr-evil1/kodi-expanded-repo/refs/heads/main/plugin.video.bilddenews/icon.png" alt="Icon" style="object-fit: contain; background: rgba(0,0,0,0.4); padding: 10px;">
+                </div>
+
+                <div class="window-content">
+                    <h2 class="addon-name">Bild.de News</h2>
+                    <p class="addon-desc">Mit diesem Addon kannst du die neuesten Nachrichten und Schlagzeilen von Bild.de direkt in Kodi abrufen. Übersichtlich sortiert nach Kategorien und optimiert für die D-Pad-Navigation.</p>
+                    <a href="https://github.com/mr-evil1/kodi-expanded-repo/raw/refs/heads/main/plugin.video.bilddenews/plugin.video.bilddenews-2026.05.04.zip" class="mac-btn">Download ZIP (v2026.05.04)</a>
+                </div>
+            </div>
+        
+            <div class="mac-window">
+                <div class="window-header">
+                    <div class="traffic-lights">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="window-title">script.ydkj.quiz v2026.06.07</div>
+                </div>
+                
+                <div class="addon-gallery">
+                    <img src="https://via.placeholder.com/1025x576?text=No+Fanart" alt="Fanart">
+                    <img src="https://via.placeholder.com/256x256?text=No+Icon" alt="Icon" style="object-fit: contain; background: rgba(0,0,0,0.4); padding: 10px;">
+                </div>
+
+                <div class="window-content">
+                    <h2 class="addon-name"><span style="color: #0088ff;">Y</span><span style="color: #3399ff;">o</span><span style="color: #66aaff;">u</span> <span style="color: #88bbff;">D</span><span style="color: #aaccff;">o</span><span style="color: #bbddff;">n</span><span style="color: #ccddff;">'</span><span style="color: #ddeeff;">t</span> <span style="color: #bbddff;">K</span><span style="color: #aaeeff;">n</span><span style="color: #88ddff;">o</span><span style="color: #66ccff;">w</span> <span style="color: #44bbff;">J</span><span style="color: #22aaff;">a</span><span style="color: #0099ff;">c</span><span style="color: #0088ff;">k</span> <span style="color: #0077ff;">-</span> <span style="color: #0066ff;">F</span><span style="color: #0055ff;">a</span><span style="color: #0044ff;">n</span> <span style="color: #0033ff;">Q</span><span style="color: #0022ff;">u</span><span style="color: #0011ff;">i</span><span style="color: #0000ff;">z</span></h2>
+                    <p class="addon-desc">Willkommen beim Fan-Quiz! Teste dein Allgemeinwissen in knallharten Runden, aber Vorsicht: Unser virtueller Moderator ist absolut gnadenlos. Mit dem speziellen „Nagel-Feature“ kannst du deine Mitspieler gezielt in die Falle locken und sie zu einer Antwort zwingen – doch pass auf, dass der Schuss nicht nach hinten losgeht! Wer zu feige ist oder falsch liegt, wird nicht nur mit Punktabzug bestraft, sondern muss sich auch noch einen der vielen beißend sarkastischen Kommentare anhören. Bist du bereit, dich verbal zerlegen zu lassen, oder knackst du den Highscore?</p>
+                    <a href="https://github.com/mr-evil1/kodi-expanded-repo/raw/refs/heads/main/script.ydkj.quiz/script.ydkj.quiz-2026.06.07.zip" class="mac-btn">Download ZIP (v2026.06.07)</a>
+                </div>
+            </div>
+        
+            <div class="mac-window">
+                <div class="window-header">
+                    <div class="traffic-lights">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="window-title">plugin.video.rtlplus v2026.06.16</div>
+                </div>
+                
+                <div class="addon-gallery">
+                    <img src="https://raw.githubusercontent.com/mr-evil1/kodi-expanded-repo/refs/heads/main/plugin.video.rtlplus/resources/media/fanart.jpg" alt="Fanart">
+                    <img src="https://raw.githubusercontent.com/mr-evil1/kodi-expanded-repo/refs/heads/main/plugin.video.rtlplus/resources/media/icon.png" alt="Icon" style="object-fit: contain; background: rgba(0,0,0,0.4); padding: 10px;">
+                </div>
+
+                <div class="window-content">
+                    <h2 class="addon-name">RTL+</h2>
+                    <p class="addon-desc">RTL+ Serien, Shows, Filme und Live-TV. Vollständig auf Bedrock API aufgebaut.</p>
+                    <a href="https://github.com/mr-evil1/kodi-expanded-repo/raw/refs/heads/main/plugin.video.rtlplus/plugin.video.rtlplus-2026.06.16.zip" class="mac-btn">Download ZIP (v2026.06.16)</a>
+                </div>
+            </div>
+        
+            <div class="mac-window">
+                <div class="window-header">
+                    <div class="traffic-lights">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="window-title">plugin.video.werwirdmillionaer v2026.06.07</div>
+                </div>
+                
+                <div class="addon-gallery">
+                    <img src="https://raw.githubusercontent.com/mr-evil1/kodi-expanded-repo/refs/heads/main/plugin.video.werwirdmillionaer/fanart.jpg" alt="Fanart">
+                    <img src="https://raw.githubusercontent.com/mr-evil1/kodi-expanded-repo/refs/heads/main/plugin.video.werwirdmillionaer/icon.png" alt="Icon" style="object-fit: contain; background: rgba(0,0,0,0.4); padding: 10px;">
+                </div>
+
+                <div class="window-content">
+                    <h2 class="addon-name">Wer wird Millionär?</h2>
+                    <p class="addon-desc">Wer wird Millionär? ist die bekannteste Quizshow Deutschlands, moderiert von Günther Jauch. Ziel ist es, durch das Beantworten von 15 Fragen mit steigendem Schwierigkeitsgrad bis zu einer Million Euro zu gewinnen. Als Hilfe stehen drei Joker zur Verfügung: Publikumsjoker, Telefonjoker und 50:50-Joker. Dieses Kodi-Addon ermöglicht es, mit echten Fragen aus der Sendung zu trainieren, Highscores zu vergleichen und den eigenen Wissensstand zu testen – direkt vom Sofa aus.</p>
+                    <a href="https://github.com/mr-evil1/kodi-expanded-repo/raw/refs/heads/main/plugin.video.werwirdmillionaer/plugin.video.werwirdmillionaer-2026.06.07.zip" class="mac-btn">Download ZIP (v2026.06.07)</a>
+                </div>
+            </div>
+        
+            <div class="mac-window">
+                <div class="window-header">
+                    <div class="traffic-lights">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="window-title">script.module.httpx v0.28.1.0</div>
+                </div>
+                
+                <div class="addon-gallery">
+                    <img src="https://via.placeholder.com/1025x576?text=No+Fanart" alt="Fanart">
+                    <img src="https://via.placeholder.com/256x256?text=No+Icon" alt="Icon" style="object-fit: contain; background: rgba(0,0,0,0.4); padding: 10px;">
+                </div>
+
+                <div class="window-content">
+                    <h2 class="addon-name">httpx</h2>
+                    <p class="addon-desc">
+      Full-featured HTTP client for Python 3, with sync and async APIs,
+      HTTP/1.1 and HTTP/2 support. Version 0.28.1.
+    </p>
+                    <a href="https://github.com/mr-evil1/kodi-expanded-repo/raw/refs/heads/main/script.module.httpx/script.module.httpx-0.28.1.0.zip" class="mac-btn">Download ZIP (v0.28.1.0)</a>
+                </div>
+            </div>
+        
+        </div>
+    </main>
+
+</body>
+</html>
