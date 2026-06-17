@@ -1,10 +1,13 @@
 import os
 import xml.etree.ElementTree as ET
 import re
+import hashlib
+from PIL import Image, ImageDraw, ImageFont
 
 # Konfiguration für dein Repository
 REPO_USER = "mr-evil1"
 REPO_NAME = "kodi-expanded-repo"
+GENERATED_DIR = "_generated_assets"
 
 def clean_kodi_text(text):
     """Wandelt Kodi-BBCodes ([COLOR], [B], [CR]) in valides HTML um"""
@@ -44,6 +47,77 @@ def find_asset(addon_id, explicit_path, fallback_filenames):
             return f"https://raw.githubusercontent.com/{REPO_USER}/{REPO_NAME}/refs/heads/main/{url_path}"
 
     return None
+
+def get_color_for_id(addon_id):
+    digest = hashlib.md5(addon_id.encode("utf-8")).hexdigest()
+    r = max(int(digest[0:2], 16), 40)
+    g = max(int(digest[2:4], 16), 40)
+    b = max(int(digest[4:6], 16), 40)
+    return (r, g, b)
+
+def get_font(size):
+    font_paths = [
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+    ]
+    for path in font_paths:
+        if os.path.exists(path):
+            return ImageFont.truetype(path, size)
+    return ImageFont.load_default()
+
+def get_initials(name, addon_id):
+    source = name or addon_id.split(".")[-1]
+    words = re.sub(r'[^A-Za-z0-9 ]', ' ', source).split()
+    letters = "".join(w[0] for w in words[:2]).upper()
+    return letters or "?"
+
+def generate_icon(addon_id, name):
+    out_dir = os.path.join(GENERATED_DIR, addon_id)
+    out_path = os.path.join(out_dir, "icon.png")
+    if os.path.exists(out_path):
+        return out_path
+
+    os.makedirs(out_dir, exist_ok=True)
+    color = get_color_for_id(addon_id)
+    img = Image.new("RGB", (256, 256), color)
+    draw = ImageDraw.Draw(img)
+
+    letters = get_initials(name, addon_id)
+    font = get_font(110)
+    bbox = draw.textbbox((0, 0), letters, font=font)
+    text_w = bbox[2] - bbox[0]
+    text_h = bbox[3] - bbox[1]
+    draw.text(((256 - text_w) / 2 - bbox[0], (256 - text_h) / 2 - bbox[1]), letters, font=font, fill=(255, 255, 255))
+
+    img.save(out_path)
+    return out_path
+
+def generate_fanart(addon_id, name):
+    out_dir = os.path.join(GENERATED_DIR, addon_id)
+    out_path = os.path.join(out_dir, "fanart.jpg")
+    if os.path.exists(out_path):
+        return out_path
+
+    os.makedirs(out_dir, exist_ok=True)
+    color = get_color_for_id(addon_id)
+    darker = tuple(max(c - 70, 0) for c in color)
+    img = Image.new("RGB", (1280, 720), darker)
+    draw = ImageDraw.Draw(img)
+
+    for x in range(0, 1280, 2):
+        ratio = x / 1280
+        blended = tuple(int(darker[i] + (color[i] - darker[i]) * ratio) for i in range(3))
+        draw.line([(x, 0), (x, 720)], fill=blended)
+
+    display_name = name or addon_id
+    font = get_font(60)
+    bbox = draw.textbbox((0, 0), display_name, font=font)
+    text_w = bbox[2] - bbox[0]
+    text_h = bbox[3] - bbox[1]
+    draw.text(((1280 - text_w) / 2 - bbox[0], (720 - text_h) / 2 - bbox[1]), display_name, font=font, fill=(255, 255, 255))
+
+    img.save(out_path, quality=85)
+    return out_path
 
 def generate_html():
     if not os.path.exists("addons.xml"):
@@ -91,8 +165,15 @@ def generate_html():
             if fanart_elem is not None and fanart_elem.text:
                 fanart_path = fanart_elem.text.strip()
 
-        icon_url = find_asset(addon_id, icon_path, "icon.png") or "https://via.placeholder.com/256x256?text=No+Icon"
-        fanart_url = find_asset(addon_id, fanart_path, ["fanart.png", "fanart.jpg", "fanart.jpeg"]) or "https://via.placeholder.com/1025x576?text=No+Fanart"
+        icon_url = find_asset(addon_id, icon_path, "icon.png")
+        if icon_url is None:
+            local_path = generate_icon(addon_id, name).replace("\\", "/")
+            icon_url = f"https://raw.githubusercontent.com/{REPO_USER}/{REPO_NAME}/refs/heads/main/{local_path}"
+
+        fanart_url = find_asset(addon_id, fanart_path, ["fanart.png", "fanart.jpg", "fanart.jpeg"])
+        if fanart_url is None:
+            local_path = generate_fanart(addon_id, name).replace("\\", "/")
+            fanart_url = f"https://raw.githubusercontent.com/{REPO_USER}/{REPO_NAME}/refs/heads/main/{local_path}"
 
         # KORRIGIERTER ZIP-PFAD (Direkt im Addon-Ordner via refs/heads/main)
         zip_url = f"https://github.com/{REPO_USER}/{REPO_NAME}/raw/refs/heads/main/{addon_id}/{addon_id}-{version}.zip"
