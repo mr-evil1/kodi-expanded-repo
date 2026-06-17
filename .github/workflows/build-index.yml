@@ -28,6 +28,9 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Install dependencies
+      run: pip install Pillow
+
     - name: Generate index.html
       run: python gitevil.py
 
@@ -36,11 +39,11 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
-        git add index.html
+        git add index.html _generated_assets
 
         if git diff --staged --quiet; then
-          echo "Keine Änderungen an index.html festgestellt. Überspringe Commit."
+          echo "Keine Änderungen festgestellt. Überspringe Commit."
         else
-          git commit -m "chore: auto-update index.html [skip ci]"
+          git commit -m "chore: auto-update index.html und Platzhalterbilder [skip ci]"
           git push origin HEAD:main
         fi
