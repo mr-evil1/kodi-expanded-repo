@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.video.atvdownloader"
        name="Downloader ATV"
-       version="2026.06.19"
+       version="2026.06.20"
        provider-name="mr-evil1">
 
     <requires>
