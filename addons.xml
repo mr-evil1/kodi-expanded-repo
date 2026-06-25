@@ -65,7 +65,7 @@
         </assets>
     </extension>
 </addon>
-<addon id="plugin.video.rtlplus" name="RTL+" version="2026.06.25" provider-name="mr-evil1">
+<addon id="plugin.video.rtlplus" name="RTL+" version="2026.06.26" provider-name="mr-evil1">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
         <import addon="repository.kodi.expanded" version="1.0.0" optional="true"/>
@@ -89,7 +89,7 @@
 			<fanart>resources/media/fanart.jpg</fanart>
 		</assets>
 		<news>
-[B][COLOR red]Version (25.06.2026) - Erweiterung[/COLOR][/B]
+[B][COLOR red]Version (26.06.2026) - Erweiterung[/COLOR][/B]
 - Hardware Decoder Fix. Win und Linux
 
 [B][COLOR red]Version (16.06.2026) - Erweiterung[/COLOR][/B]
