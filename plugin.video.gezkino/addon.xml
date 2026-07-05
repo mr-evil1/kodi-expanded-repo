@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.gezkino" name="[COLOR ff007fff][[/COLOR][COLOR ff3266ff]G[/COLOR][COLOR ff664cff]E[/COLOR][COLOR ff9933ff]Z[/COLOR][COLOR ffcc19ff]][/COLOR][COLOR ffff00ff] [/COLOR][COLOR ffdf00ff]K[/COLOR][COLOR ffbf00ff]i[/COLOR][COLOR ff9f00ff]N[/COLOR][COLOR ff7f00ff]O[/COLOR]" version="2026.06.09" provider-name="zusatzmetall, Kato14, mr-evil1, Kangool">
+<addon id="plugin.video.gezkino" name="[COLOR ff007fff][[/COLOR][COLOR ff3266ff]G[/COLOR][COLOR ff664cff]E[/COLOR][COLOR ff9933ff]Z[/COLOR][COLOR ffcc19ff]][/COLOR][COLOR ffff00ff] [/COLOR][COLOR ffdf00ff]K[/COLOR][COLOR ffbf00ff]i[/COLOR][COLOR ff9f00ff]N[/COLOR][COLOR ff7f00ff]O[/COLOR]" version="2026.07.05" provider-name="zusatzmetall, Kato14, mr-evil1, Kangool">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
         <import addon="script.module.requests"/>
@@ -9,7 +9,7 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary lang="de">Filtert Spielfilme aus den öffentlich-rechtlichen Mediatheken (Mediathekview)</summary>
-        <description lang="de">Zeigt Filme ab 78 Minuten Laufzeit</description>
+        <description lang="de">Entdecke eine kuratierte Auswahl an Spielfilmen, sortiert nach Genres, Jahren oder Bewertungen und bietet eine übersichtliche, benutzerfreundliche Oberfläche für dein Media Center.</description>
         <platform>all</platform>
 		<assets>
 			<icon>media/icon.png</icon>
