@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
+<addon id="plugin.video.werwirdmillionaer"
+       name="Wer wird Millionär?"
+       version="2026.06.07"
+       provider-name="mr-evil1">
+
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="repository.kodi.expanded" version="1.0.0"/>
+    </requires>
+
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <summary lang="de">Wer wird Millionär?</summary>
+        <summary lang="en">Who Wants to Be a Millionaire?</summary>
+        <description lang="de">Wer wird Millionär? ist die bekannteste Quizshow Deutschlands, moderiert von Günther Jauch. Ziel ist es, durch das Beantworten von 15 Fragen mit steigendem Schwierigkeitsgrad bis zu einer Million Euro zu gewinnen. Als Hilfe stehen drei Joker zur Verfügung: Publikumsjoker, Telefonjoker und 50:50-Joker. Dieses Kodi-Addon ermöglicht es, mit echten Fragen aus der Sendung zu trainieren, Highscores zu vergleichen und den eigenen Wissensstand zu testen – direkt vom Sofa aus.</description>
+        <description lang="en">Who Wants to Be a Millionaire? is Germany's most iconic quiz show, hosted by Günther Jauch. The goal is to answer 15 increasingly difficult multiple-choice questions to win up to one million euros. Three lifelines are available: Ask the Audience, Phone a Friend, and 50:50. This Kodi add-on lets you practice with real questions from the show, compete on leaderboards, and test your knowledge – all from your couch.</description>
+        <platform>all</platform>
+      <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+      </assets>
+    </extension>
+
+</addon>
 <addon id="plugin.video.gezkino" name="[COLOR ff007fff][[/COLOR][COLOR ff3266ff]G[/COLOR][COLOR ff664cff]E[/COLOR][COLOR ff9933ff]Z[/COLOR][COLOR ffcc19ff]][/COLOR][COLOR ffff00ff] [/COLOR][COLOR ffdf00ff]K[/COLOR][COLOR ffbf00ff]i[/COLOR][COLOR ff9f00ff]N[/COLOR][COLOR ff7f00ff]O[/COLOR]" version="2026.07.06" provider-name="zusatzmetall, Kato14, mr-evil1, Kangool">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -21,6 +48,95 @@
 			<screenshot>media/fanart.png</screenshot>			
 		</assets>        
     </extension>
+</addon>
+<addon id="repository.kodi.expanded"
+       name="Kodi Expanded Repository"
+       version="1.0.0"
+       provider-name="mr-evil1">
+
+  <extension point="xbmc.addon.repository" name="Kodi Expanded Repository">
+    <dir>
+      <info compressed="false">https://mr-evil1.github.io/kodi-expanded-repo/addons.xml</info>
+      <checksum>https://mr-evil1.github.io/kodi-expanded-repo/addons.xml.md5</checksum>
+      <datadir zip="true">https://mr-evil1.github.io/kodi-expanded-repo/</datadir>
+    </dir>
+  </extension>
+
+  <extension point="xbmc.addon.metadata">
+    <summary lang="de">Kodi Expanded Repository</summary>
+    <summary lang="en">Kodi Expanded Repository</summary>
+    <description lang="de">Repository von Kodi Expanded Addons.</description>
+    <description lang="en">Repository of Kodi Expanded Addons.</description>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
+
+</addon>
+<addon id="plugin.video.atvdownloader"
+       name="Downloader ATV"
+       version="2026.06.20"
+       provider-name="mr-evil1">
+
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="xbmc.gui" version="5.17.0"/>
+        <import addon="repository.kodi.expanded" version="1.0.0" optional="true"/>
+        <import addon="repository.kodinerds" optional="true"/>
+    </requires>
+
+    <extension point="xbmc.python.pluginsource"
+               library="addon.py">
+        <provides>video</provides>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Browser-based downloader and file manager for Kodi</summary>
+        <summary lang="de_DE">Browser-basierter Downloader und Dateimanager für Kodi</summary>
+        <description lang="en_GB">Downloader is a browser-based tool that lets you navigate to any URL, download files directly to your device, and manage your downloaded files. Supports APK installs, custom download folders, TV-mode navigation, bookmarks/favorites, and adjustable text zoom.</description>
+        <description lang="de_DE">Downloader ist ein browserbasiertes Tool, mit dem du jede beliebige URL aufrufen, Dateien direkt auf dein Gerät herunterladen und deine heruntergeladenen Dateien verwalten kannst. Unterstützt APK-Installationen, benutzerdefinierte Download-Ordner, TV-Modus-Navigation, Lesezeichen/Favoriten und einstellbaren Textzoom.</description>
+        <disclaimer lang="en_GB">Use responsibly. Only download content you have the right to access.</disclaimer>
+        <disclaimer lang="de_DE">Bitte verantwortungsbewusst nutzen. Lade nur Inhalte herunter, auf die du ein Zugriffsrecht hast.</disclaimer>
+        <platform>all</platform>
+        <language>en de</language>
+        <license>MIT</license>
+        <assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets>
+        <forum/>
+        <website>https://go.aftvnews.com/</website>
+        <source/>
+        <news>
+1.5.3 - Initial Kodi port based on com.esaba.downloader APK
+        </news>
+    </extension>
+
+</addon>
+<addon id="script.module.httpx"
+       name="httpx"
+       version="0.28.1.0"
+       provider-name="encode42">
+
+  <requires>
+    <import addon="xbmc.python" version="3.0.0"/>
+  </requires>
+
+  <extension point="xbmc.python.module" library="lib"/>
+
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">httpx – A next-generation HTTP client for Python</summary>
+    <description lang="en_GB">
+      Full-featured HTTP client for Python 3, with sync and async APIs,
+      HTTP/1.1 and HTTP/2 support. Version 0.28.1.
+    </description>
+    <license>BSD-3-Clause</license>
+    <source>https://github.com/encode/httpx</source>
+    <platform>all</platform>
+  </extension>
+
 </addon>
 <addon id="plugin.video.bilddenews" name="Bild.de News" version="2026.05.04" provider-name="zusatzmetall">
     <requires>
@@ -67,7 +183,7 @@
         </assets>
     </extension>
 </addon>
-<addon id="plugin.video.rtlplus" name="RTL+" version="2026.06.26" provider-name="mr-evil1">
+<addon id="plugin.video.rtlplus" name="RTL+" version="2026.08.28" provider-name="mr-evil1">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
         <import addon="repository.kodi.expanded" version="1.0.0" optional="true"/>
@@ -91,6 +207,12 @@
 			<fanart>resources/media/fanart.jpg</fanart>
 		</assets>
 		<news>
+[B][COLOR red]Version (28.08.2026) - Erweiterung[/COLOR][/B]
+- Fix Premium Login bei einigen Geräten
+
+[B][COLOR red]Version (22.08.2026) - Erweiterung[/COLOR][/B]
+- Fix Bedrok Token
+
 [B][COLOR red]Version (26.06.2026) - Erweiterung[/COLOR][/B]
 - Hardware Decoder Fix. Win und Linux
 
@@ -181,121 +303,5 @@
 - Navigation aus /navigation/desktop
 		</news>
 	</extension>
-</addon>
-<addon id="plugin.video.werwirdmillionaer"
-       name="Wer wird Millionär?"
-       version="2026.06.07"
-       provider-name="mr-evil1">
-
-    <requires>
-        <import addon="xbmc.python" version="3.0.0"/>
-        <import addon="repository.kodi.expanded" version="1.0.0"/>
-    </requires>
-
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
-    </extension>
-
-    <extension point="xbmc.addon.metadata">
-        <summary lang="de">Wer wird Millionär?</summary>
-        <summary lang="en">Who Wants to Be a Millionaire?</summary>
-        <description lang="de">Wer wird Millionär? ist die bekannteste Quizshow Deutschlands, moderiert von Günther Jauch. Ziel ist es, durch das Beantworten von 15 Fragen mit steigendem Schwierigkeitsgrad bis zu einer Million Euro zu gewinnen. Als Hilfe stehen drei Joker zur Verfügung: Publikumsjoker, Telefonjoker und 50:50-Joker. Dieses Kodi-Addon ermöglicht es, mit echten Fragen aus der Sendung zu trainieren, Highscores zu vergleichen und den eigenen Wissensstand zu testen – direkt vom Sofa aus.</description>
-        <description lang="en">Who Wants to Be a Millionaire? is Germany's most iconic quiz show, hosted by Günther Jauch. The goal is to answer 15 increasingly difficult multiple-choice questions to win up to one million euros. Three lifelines are available: Ask the Audience, Phone a Friend, and 50:50. This Kodi add-on lets you practice with real questions from the show, compete on leaderboards, and test your knowledge – all from your couch.</description>
-        <platform>all</platform>
-      <assets>
-        <icon>icon.png</icon>
-        <fanart>fanart.jpg</fanart>
-      </assets>
-    </extension>
-
-</addon>
-<addon id="plugin.video.atvdownloader"
-       name="Downloader ATV"
-       version="2026.06.20"
-       provider-name="mr-evil1">
-
-    <requires>
-        <import addon="xbmc.python" version="3.0.0"/>
-        <import addon="xbmc.gui" version="5.17.0"/>
-        <import addon="repository.kodi.expanded" version="1.0.0" optional="true"/>
-        <import addon="repository.kodinerds" optional="true"/>
-    </requires>
-
-    <extension point="xbmc.python.pluginsource"
-               library="addon.py">
-        <provides>video</provides>
-    </extension>
-
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en_GB">Browser-based downloader and file manager for Kodi</summary>
-        <summary lang="de_DE">Browser-basierter Downloader und Dateimanager für Kodi</summary>
-        <description lang="en_GB">Downloader is a browser-based tool that lets you navigate to any URL, download files directly to your device, and manage your downloaded files. Supports APK installs, custom download folders, TV-mode navigation, bookmarks/favorites, and adjustable text zoom.</description>
-        <description lang="de_DE">Downloader ist ein browserbasiertes Tool, mit dem du jede beliebige URL aufrufen, Dateien direkt auf dein Gerät herunterladen und deine heruntergeladenen Dateien verwalten kannst. Unterstützt APK-Installationen, benutzerdefinierte Download-Ordner, TV-Modus-Navigation, Lesezeichen/Favoriten und einstellbaren Textzoom.</description>
-        <disclaimer lang="en_GB">Use responsibly. Only download content you have the right to access.</disclaimer>
-        <disclaimer lang="de_DE">Bitte verantwortungsbewusst nutzen. Lade nur Inhalte herunter, auf die du ein Zugriffsrecht hast.</disclaimer>
-        <platform>all</platform>
-        <language>en de</language>
-        <license>MIT</license>
-        <assets>
-			<icon>icon.png</icon>
-			<fanart>fanart.jpg</fanart>
-		</assets>
-        <forum/>
-        <website>https://go.aftvnews.com/</website>
-        <source/>
-        <news>
-1.5.3 - Initial Kodi port based on com.esaba.downloader APK
-        </news>
-    </extension>
-
-</addon>
-<addon id="script.module.httpx"
-       name="httpx"
-       version="0.28.1.0"
-       provider-name="encode42">
-
-  <requires>
-    <import addon="xbmc.python" version="3.0.0"/>
-  </requires>
-
-  <extension point="xbmc.python.module" library="lib"/>
-
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en_GB">httpx – A next-generation HTTP client for Python</summary>
-    <description lang="en_GB">
-      Full-featured HTTP client for Python 3, with sync and async APIs,
-      HTTP/1.1 and HTTP/2 support. Version 0.28.1.
-    </description>
-    <license>BSD-3-Clause</license>
-    <source>https://github.com/encode/httpx</source>
-    <platform>all</platform>
-  </extension>
-
-</addon>
-<addon id="repository.kodi.expanded"
-       name="Kodi Expanded Repository"
-       version="1.0.0"
-       provider-name="mr-evil1">
-
-  <extension point="xbmc.addon.repository" name="Kodi Expanded Repository">
-    <dir>
-      <info compressed="false">https://mr-evil1.github.io/kodi-expanded-repo/addons.xml</info>
-      <checksum>https://mr-evil1.github.io/kodi-expanded-repo/addons.xml.md5</checksum>
-      <datadir zip="true">https://mr-evil1.github.io/kodi-expanded-repo/</datadir>
-    </dir>
-  </extension>
-
-  <extension point="xbmc.addon.metadata">
-    <summary lang="de">Kodi Expanded Repository</summary>
-    <summary lang="en">Kodi Expanded Repository</summary>
-    <description lang="de">Repository von Kodi Expanded Addons.</description>
-    <description lang="en">Repository of Kodi Expanded Addons.</description>
-    <platform>all</platform>
-    <assets>
-      <icon>icon.png</icon>
-      <fanart>fanart.jpg</fanart>
-    </assets>
-  </extension>
-
 </addon>
 </addons>
