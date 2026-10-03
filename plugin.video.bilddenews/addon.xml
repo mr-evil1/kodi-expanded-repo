@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.bilddenews" name="Bild.de News" version="2026.05.04" provider-name="zusatzmetall">
+<addon id="plugin.video.bilddenews" name="Bild.de News" version="2026.10.03" provider-name="zusatzmetall, IT('s) Possible">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
         <import addon="script.module.requests"/>
@@ -16,10 +16,11 @@
         <source></source>
         <assets>
             <icon>icon.png</icon>
-            <fanart>fanart.png</fanart>
+            <fanart>fanart.jpg</fanart>
+            <screenshot>fanart.jpg</screenshot>
         </assets>
-        <summary lang="de_DE">Aktuelle Nachrichten von Bild.de</summary>
-        <description lang="de_DE">Mit diesem Addon kannst du die neuesten Nachrichten und Schlagzeilen von Bild.de direkt in Kodi abrufen. Übersichtlich sortiert nach Kategorien und optimiert für die D-Pad-Navigation.</description>
+        <summary lang="de_DE">Aktuelle Nachrichten, Videos und BILD Live von Bild.de</summary>
+        <description lang="de_DE">Mit diesem Addon kannst du die neuesten Nachrichten, Schlagzeilen sowie die Video-Mediathek und den "BILD Live" Stream von Bild.de direkt in Kodi abrufen. Übersichtlich sortiert. IT('s) Possible Team</description>
         <disclaimer lang="de_DE">Dieses Addon ist ein eigenständiges Community-Projekt und steht in keiner Verbindung mit der Axel Springer SE.</disclaimer>
     </extension>
 </addon>
